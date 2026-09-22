@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 html, body {
     margin: 0;
@@ -13,119 +12,104 @@ html, body {
     overflow: hidden;
     background: transparent;
 }
-
 iframe {
     position: absolute;
     border: 0;
     background: transparent;
     pointer-events: none;
 }
-
 /* =========================
-   1. MEDIASHARE
+   1. MEDIASHARE — KIRI ATAS
    ========================= */
 #mediashare {
-    position: absolute;
     left: 0;
     top: 0;
     width: 50%;
-    height: 45%;
+    height: 25%;
 }
-
 /* =========================
-   2. ALERT
+   2. ALERT — KANAN ATAS
    ========================= */
 #alert {
-    position: absolute;
     right: 0;
     top: 0;
     width: 50%;
-    height: 45%;
+    height: 25%;
 }
-
 /* =========================
-   3. MILESTONE
+   3. MILESTONE — TENGAH ATAS
    ========================= */
 #milestone {
-    position: absolute;
-    left: 0;
-    top: 45%;
-    width: 25%;
-    height: 25%;
+    left: 10%;
+    top: 20%;
+    width: 80%;
+    height: 12%;
 }
-
 /* =========================
-   4. TOP LIKE
+   AREA GAME LANDSCAPE
+   Patokan posisi:
+   tengah portrait
+   ========================= */
+/* =========================
+   4. TOP LIKE — KANAN GAME
    ========================= */
 #toplike {
-    position: absolute;
-    left: 25%;
-    top: 45%;
-    width: 25%;
-    height: 25%;
+    right: 0;
+    top: 47%;
+    width: 27%;
+    height: 8%;
 }
-
 /* =========================
-   5. TOP GIFT
+   5. TOP GIFT — BAWAH TOP LIKE
    ========================= */
 #topgift {
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    width: 25%;
-    height: 25%;
+    right: 0;
+    top: 56%;
+    width: 27%;
+    height: 8%;
 }
-
 /* =========================
-   TOP 10 RUNNING TEXT
+   6. RUNNING TEXT
+   TEPAT DI BAWAH GAME
    ========================= */
 #runningtext {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 15%;
+    left: 5%;
+    top: 68%;
+    width: 90%;
+    height: 8%;
 }
 </style>
 </head>
-
 <body>
-
-<!-- MEDIASHARE -->
+<!-- 1. MEDIASHARE -->
 <iframe
     id="mediashare"
     src="https://sociabuzz.com/pro/tribe/mediashare/v2/4342997870?colorName=%2300ff00&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23eeeeee&alphaFrom=1&mediashareActive=1&mediashareTTS=1&font=Open%2BSans%3A800&mediashareNSFW=0">
 </iframe>
-
-<!-- ALERT -->
+<!-- 2. ALERT -->
 <iframe
     id="alert"
     src="https://sociabuzz.com/pro/tribe/alert1/v3/4342997870?colorName=%23ffffff&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23b4a7d6&alphaFrom=1&gifActive=1&maxDuration=10&font=Open%2BSans%3A800">
 </iframe>
-
-<!-- MILESTONE -->
+<!-- 3. MILESTONE -->
 <iframe
     id="milestone"
     src="https://sociabuzz.com/pro/tribe/total1/v1/4342997870">
 </iframe>
-
-<!-- TOP LIKE -->
+<!-- 4. TOP LIKE -->
 <iframe
     id="toplike"
     src="https://widgets.tikfinity.com/jRzLJxKXeJ">
 </iframe>
-
-<!-- TOP GIFT -->
+<!-- 5. TOP GIFT -->
 <iframe
     id="topgift"
     src="https://widgets.tikfinity.com/80gnPUIdfX">
 </iframe>
-
-<!-- TOP 10 RUNNING TEXT -->
+<!-- 6. TOP 10 RUNNING TEXT -->
 <iframe
     id="runningtext"
     src="https://sociabuzz.com/pro/tribe/toprunningtext/v2/4342997870">
 </iframe>
-
 </body>
 </html>
