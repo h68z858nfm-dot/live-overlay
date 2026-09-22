@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBS Stream Overlay Container (1080x1920)</title>
+    <title>Stream Overlay Container (1080x1920)</title>
     <style>
         * {
             margin: 0;
@@ -14,9 +14,12 @@
         html, body {
             width: 100%;
             height: 100%;
-            background: transparent !important;
+            background: rgba(0, 0, 0, 0) !important;
             overflow: hidden;
             font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Kanvas Utama 1080x1920 Pixels */
@@ -25,15 +28,14 @@
             width: 1080px;
             height: 1920px;
             background: transparent;
-            margin: 0 auto;
             overflow: hidden;
         }
 
-        /* Style standar untuk seluruh Iframe Overlay */
+        /* Iframe styling dasar */
         .overlay-iframe {
             position: absolute;
             border: none;
-            background: transparent;
+            background: transparent !important;
             overflow: hidden;
             pointer-events: auto;
         }
@@ -43,7 +45,7 @@
             top: 20px;
             left: 20px;
             width: 500px;
-            height: 360px;
+            height: 350px;
             z-index: 10;
         }
 
@@ -52,56 +54,55 @@
             top: 20px;
             right: 20px;
             width: 500px;
-            height: 360px;
+            height: 350px;
             z-index: 10;
         }
 
-        /* LINK 3: Milestone (Center below Link 1 & 2) */
+        /* LINK 3: Milestone (Posisi diturunkan agar TIDAK mepet ke atas) */
         #iframe-link-3 {
-            top: 600px;
+            top: 410px; /* Diturunkan lebih ke bawah tepat di atas area gameplay */
             left: 50%;
             transform: translateX(-50%);
-            width: 860px;
-            height: 140px;
+            width: 900px;
+            height: 120px;
             z-index: 10;
         }
 
-        /* Area Transparan Tengah (Ruang untuk Screen Capture Landscape) */
-        /* Rentang Y sekitar 550px hingga 1150px (Rasio 16:9 Landscape) */
+        /* Area Tengah: Screen Capture Landscape (Game Area) */
         .gameplay-area-guide {
             position: absolute;
-            top: 550px;
+            top: 540px;
             left: 0;
             width: 1080px;
-            height: 600px;
+            height: 607px; /* Aspect Ratio 16:9 Landscape */
             pointer-events: none;
-            /* Area ini dibiarkan kosong & transparan agar Game/Screen Capture di OBS terlihat di belakangnya */
+            background: transparent;
         }
 
-        /* LINK 4: Top 10 Running Text (Below Screen Capture, Horizontal) */
+        /* LINK 4: Top 10 Running Text (Tepat di bawah Screen capture Landscape) */
         #iframe-link-4 {
-            top: 1160px;
+            top: 1155px;
             left: 0;
             width: 1080px;
             height: 80px;
             z-index: 10;
         }
 
-        /* LINK 5: Top Like (Bottom Right Upper) */
+        /* LINK 5: Top Like (Bottom Right - Upper) */
         #iframe-link-5 {
-            top: 1260px;
+            top: 1255px;
             right: 20px;
             width: 480px;
-            height: 300px;
+            height: 310px;
             z-index: 10;
         }
 
-        /* LINK 6: Top Gift (Bottom Right Lower) */
+        /* LINK 6: Top Gift (Bottom Right - Lower) */
         #iframe-link-6 {
             top: 1580px;
             right: 20px;
             width: 480px;
-            height: 300px;
+            height: 310px;
             z-index: 10;
         }
     </style>
@@ -109,7 +110,7 @@
 <body>
     <div class="overlay-canvas">
 
-        <!-- LINK 1: Alert (Sociabuzz) -->
+        <!-- LINK 1: Alert -->
         <iframe 
             id="iframe-link-1" 
             class="overlay-iframe"
@@ -118,7 +119,7 @@
             scrolling="no">
         </iframe>
 
-        <!-- LINK 2: Mediashare (Sociabuzz) -->
+        <!-- LINK 2: Mediashare -->
         <iframe 
             id="iframe-link-2" 
             class="overlay-iframe"
@@ -127,7 +128,7 @@
             scrolling="no">
         </iframe>
 
-        <!-- LINK 3: Milestone (Sociabuzz) -->
+        <!-- LINK 3: Milestone (Diturunkan) -->
         <iframe 
             id="iframe-link-3" 
             class="overlay-iframe"
@@ -136,10 +137,10 @@
             scrolling="no">
         </iframe>
 
-        <!-- Space Kosong Transparan untuk Screen Capture Landscape (Game / Display Capture di OBS) -->
+        <!-- Transparan Area untuk Screen Capture Landscape Game -->
         <div class="gameplay-area-guide"></div>
 
-        <!-- LINK 4: Top 10 Running Text (Sociabuzz) -->
+        <!-- LINK 4: Top 10 Running Text -->
         <iframe 
             id="iframe-link-4" 
             class="overlay-iframe"
@@ -147,3 +148,25 @@
             allowtransparency="true" 
             scrolling="no">
         </iframe>
+
+        <!-- LINK 5: Top Like -->
+        <iframe 
+            id="iframe-link-5" 
+            class="overlay-iframe"
+            src="https://widgets.tikfinity.com/jRzLJxKXeJ" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
+
+        <!-- LINK 6: Top Gift -->
+        <iframe 
+            id="iframe-link-6" 
+            class="overlay-iframe"
+            src="https://widgets.tikfinity.com/80gnPUIdfX" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
+
+    </div>
+</body>
+</html>
