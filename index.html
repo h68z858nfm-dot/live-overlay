@@ -1,115 +1,149 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: transparent;
-}
-iframe {
-    position: absolute;
-    border: 0;
-    background: transparent;
-    pointer-events: none;
-}
-/* =========================
-   1. MEDIASHARE — KIRI ATAS
-   ========================= */
-#mediashare {
-    left: 0;
-    top: 0;
-    width: 50%;
-    height: 25%;
-}
-/* =========================
-   2. ALERT — KANAN ATAS
-   ========================= */
-#alert {
-    right: 0;
-    top: 0;
-    width: 50%;
-    height: 25%;
-}
-/* =========================
-   3. MILESTONE — TENGAH ATAS
-   ========================= */
-#milestone {
-    left: 20%;
-    top: 20;
-    width: 60%;
-    height: 8%;
-}
-/* =========================
-   AREA GAME LANDSCAPE
-   Patokan posisi:
-   tengah portrait
-   ========================= */
-/* =========================
-   4. TOP LIKE — KANAN GAME
-   ========================= */
-#toplike {
-    right: 0;
-    top: 47%;
-    width: 27%;
-    height: 8%;
-}
-/* =========================
-   5. TOP GIFT — BAWAH TOP LIKE
-   ========================= */
-#topgift {
-    left: 10;
-    top: 80%;
-    width: 70%;
-    height: 20%;
-}
-/* =========================
-   6. RUNNING TEXT
-   TEPAT DI BAWAH GAME
-   ========================= */
-#runningtext {
-    left: 5%;
-    top: 50%;
-    width: 100%;
-    height: 8%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS Stream Overlay Container (1080x1920)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: transparent !important;
+            overflow: hidden;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Kanvas Utama 1080x1920 Pixels */
+        .overlay-canvas {
+            position: relative;
+            width: 1080px;
+            height: 1920px;
+            background: transparent;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Style standar untuk seluruh Iframe Overlay */
+        .overlay-iframe {
+            position: absolute;
+            border: none;
+            background: transparent;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+
+        /* LINK 1: Alert (Top Left) */
+        #iframe-link-1 {
+            top: 20px;
+            left: 20px;
+            width: 500px;
+            height: 360px;
+            z-index: 10;
+        }
+
+        /* LINK 2: Mediashare (Top Right) */
+        #iframe-link-2 {
+            top: 20px;
+            right: 20px;
+            width: 500px;
+            height: 360px;
+            z-index: 10;
+        }
+
+        /* LINK 3: Milestone (Center below Link 1 & 2) */
+        #iframe-link-3 {
+            top: 400px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 860px;
+            height: 140px;
+            z-index: 10;
+        }
+
+        /* Area Transparan Tengah (Ruang untuk Screen Capture Landscape) */
+        /* Rentang Y sekitar 550px hingga 1150px (Rasio 16:9 Landscape) */
+        .gameplay-area-guide {
+            position: absolute;
+            top: 550px;
+            left: 0;
+            width: 1080px;
+            height: 600px;
+            pointer-events: none;
+            /* Area ini dibiarkan kosong & transparan agar Game/Screen Capture di OBS terlihat di belakangnya */
+        }
+
+        /* LINK 4: Top 10 Running Text (Below Screen Capture, Horizontal) */
+        #iframe-link-4 {
+            top: 1160px;
+            left: 0;
+            width: 1080px;
+            height: 80px;
+            z-index: 10;
+        }
+
+        /* LINK 5: Top Like (Bottom Right Upper) */
+        #iframe-link-5 {
+            top: 1260px;
+            right: 20px;
+            width: 480px;
+            height: 300px;
+            z-index: 10;
+        }
+
+        /* LINK 6: Top Gift (Bottom Right Lower) */
+        #iframe-link-6 {
+            top: 1580px;
+            right: 20px;
+            width: 480px;
+            height: 300px;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
-<!-- 1. MEDIASHARE -->
-<iframe
-    id="mediashare"
-    src="https://sociabuzz.com/pro/tribe/mediashare/v2/4342997870?colorName=%2300ff00&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23eeeeee&alphaFrom=1&mediashareActive=1&mediashareTTS=1&font=Open%2BSans%3A800&mediashareNSFW=0">
-</iframe>
-<!-- 2. ALERT -->
-<iframe
-    id="alert"
-    src="https://sociabuzz.com/pro/tribe/alert1/v3/4342997870?colorName=%23ffffff&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23b4a7d6&alphaFrom=1&gifActive=1&maxDuration=10&font=Open%2BSans%3A800">
-</iframe>
-<!-- 3. MILESTONE -->
-<iframe
-    id="milestone"
-    src="https://sociabuzz.com/pro/tribe/total1/v1/4342997870">
-</iframe>
-<!-- 4. TOP LIKE -->
-<iframe
-    id="toplike"
-    src="https://widgets.tikfinity.com/jRzLJxKXeJ">
-</iframe>
-<!-- 5. TOP GIFT -->
-<iframe
-    id="topgift"
-    src="https://widgets.tikfinity.com/80gnPUIdfX">
-</iframe>
-<!-- 6. TOP 10 RUNNING TEXT -->
-<iframe
-    id="runningtext"
-    src="https://sociabuzz.com/pro/tribe/toprunningtext/v2/4342997870">
-</iframe>
-</body>
-</html>
+    <div class="overlay-canvas">
+
+        <!-- LINK 1: Alert (Sociabuzz) -->
+        <iframe 
+            id="iframe-link-1" 
+            class="overlay-iframe"
+            src="https://sociabuzz.com/pro/tribe/alert1/v3/4342997870?colorName=%23ffffff&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23b4a7d6&alphaFrom=1&gifActive=1&maxDuration=10&font=Open%2BSans%3A800" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
+
+        <!-- LINK 2: Mediashare (Sociabuzz) -->
+        <iframe 
+            id="iframe-link-2" 
+            class="overlay-iframe"
+            src="https://sociabuzz.com/pro/tribe/mediashare/v2/4342997870?colorName=%2300ff00&alphaName=1&colorNote=%23ffff00&alphaNote=1&colorFrom=%23eeeeee&alphaFrom=1&mediashareActive=1&mediashareTTS=1&font=Open%2BSans%3A800&mediashareNSFW=0" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
+
+        <!-- LINK 3: Milestone (Sociabuzz) -->
+        <iframe 
+            id="iframe-link-3" 
+            class="overlay-iframe"
+            src="https://sociabuzz.com/pro/tribe/total1/v1/4342997870" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
+
+        <!-- Space Kosong Transparan untuk Screen Capture Landscape (Game / Display Capture di OBS) -->
+        <div class="gameplay-area-guide"></div>
+
+        <!-- LINK 4: Top 10 Running Text (Sociabuzz) -->
+        <iframe 
+            id="iframe-link-4" 
+            class="overlay-iframe"
+            src="https://sociabuzz.com/pro/tribe/toprunningtext/v2/4342997870" 
+            allowtransparency="true" 
+            scrolling="no">
+        </iframe>
